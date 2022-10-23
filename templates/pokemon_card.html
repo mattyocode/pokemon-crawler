@@ -1,0 +1,36 @@
+{% load static %}
+
+<div class="card-wrapper" id="{{ pokemon.id }}">
+  <div class="card mb-3" style="width: 36rem">
+    <div class="row no-gutters">
+      <div class="col-4">
+        <img
+          class="card-img"
+          src="{{ pokemon.sprite }}"
+          alt="{{ pokemon.name }} sprite"
+        />
+      </div>
+
+      <div class="col-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ pokemon|title }}</h5>
+          <ul class="card-attribute-list">
+            <li>
+              <span class="bold">Height: </span>
+                  {{ pokemon.height }}
+            </li>
+            <li>
+              <span class="bold">Weight: </span>
+                  {{ pokemon.weight }}
+            </li>
+            <li><span class="bold">Stats: </span> {{ pokemon.stats_list|join:", "|title }}</li>
+            <li><span class="bold">Abilities: </span> 
+              {{ pokemon.abilities.all|join:", "|title }}
+            </li>
+          </ul>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

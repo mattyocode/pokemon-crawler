@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<div class="jumbotron">
+    <h1 class="display-4 center-subhead">Pokemon Zoo</h1>
+</div>
+
+<div class="page-container">
+
+    {% for pokemon in object_list %}
+
+        {% include 'pokemon_card.html' %}
+
+    {% endfor %}
+    
+</div>
+{% if is_paginated %}
+  {% include 'pagination.html' %}
+{% endif %}
+
+{% endblock %}

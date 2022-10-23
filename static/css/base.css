@@ -1,0 +1,93 @@
+body {
+  font-family: "Fuzzy Bubbles", sans-serif;
+  background: url("../images/forest_background.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+h1,
+h2 {
+  text-transform: uppercase;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+.jumbotron {
+  background: rgba(34, 34, 34, 0.7);
+  color: white;
+  padding: 2em 2em;
+  border-radius: 0;
+}
+
+.card-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-subhead {
+  text-align: center;
+}
+
+.page-container {
+  width: 80%;
+  margin: auto;
+}
+
+/* ---  pokemon card  --- */
+
+.card.mb-3 {
+  box-shadow: 2px 4px 6px #444;
+}
+
+.row.no-gutters {
+  margin: 1em;
+}
+
+.col-4 {
+  margin: auto auto;
+}
+
+.card-img {
+  margin: auto;
+  display: block;
+  text-align: center;
+}
+
+.card-text {
+  font-size: small;
+}
+
+.card-detail {
+  width: 100%;
+  padding: 1rem;
+}
+
+.card-attribute-list {
+  font-family: "Poppins", sans-serif;
+  list-style: none;
+  padding: 0;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+/* ---   pagination  --- */
+
+.step-links {
+  font-family: "Poppins", sans-serif;
+  margin: auto;
+  color: black;
+  font-size: large;
+}
+
+.step-links > a {
+  font-size: medium;
+  text-decoration: underline;
+  font-size: large;
+}
