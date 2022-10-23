@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 
+from celery.schedules import crontab
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -128,3 +130,13 @@ CELERY_RESULT_BACKEND = "redis"
 CELERY_BROKER_URL = "redis://redis:6379"
 CELERY_RESULT_BACKEND = "redis://redis:6379"
 CELERY_TIMEZONE = "Europe/London"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 20 * 60
+CELERY_IMPORTS = ("pokemon.tasks",)
+
+CELERY_BEAT_SCHEDULE = {
+    "catch-pokemon": {
+        "task": "pokemon.tasks.catch_pokemon",
+        "schedule": crontab(minute="*/30"),
+    },
+}
