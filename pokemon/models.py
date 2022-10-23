@@ -20,7 +20,7 @@ class Pokemon(models.Model):
     abilities = models.ManyToManyField(to=Ability, related_name="pokemon")
 
     def __str__(self):
-        return self.name
+        return self.name.replace("-", " ")
 
     @property
     def stats_list(self):
