@@ -36,7 +36,9 @@ def create_or_update_pokemon(data):
 
         abilities = []
         for ability in data["abilities"]:
-            abilities.append(Ability.objects.get_or_create(name=ability["ability"]["name"])[0])
+            abilities.append(
+                Ability.objects.get_or_create(name=ability["ability"]["name"])[0]
+            )
         pokemon_obj.abilities.set(abilities)
 
         pokemon_obj.height = data["height"]
