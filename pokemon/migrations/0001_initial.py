@@ -7,30 +7,50 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Ability',
+            name="Ability",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100, unique=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100, unique=True)),
             ],
             options={
-                'verbose_name': 'abilities',
+                "verbose_name": "abilities",
             },
         ),
         migrations.CreateModel(
-            name='Pokemon',
+            name="Pokemon",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100, unique=True)),
-                ('height', models.IntegerField(null=True)),
-                ('weight', models.IntegerField(null=True)),
-                ('stats', models.JSONField(null=True)),
-                ('sprite', models.URLField(null=True)),
-                ('abilities', models.ManyToManyField(related_name='pokemon', to='pokemon.Ability')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100, unique=True)),
+                ("height", models.IntegerField(null=True)),
+                ("weight", models.IntegerField(null=True)),
+                ("stats", models.JSONField(null=True)),
+                ("sprite", models.URLField(null=True)),
+                (
+                    "abilities",
+                    models.ManyToManyField(
+                        related_name="pokemon", to="pokemon.Ability"
+                    ),
+                ),
             ],
         ),
     ]
