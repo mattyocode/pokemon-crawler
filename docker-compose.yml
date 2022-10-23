@@ -33,7 +33,7 @@ services:
   celery:
     build:
       context: .
-    command: celery -A app worker -l info --uid=nobody --gid=nogroup
+    command: celery -A app worker -P threads -l info --uid=nobody --gid=nogroup
     volumes:
       - .:/code
     env_file:

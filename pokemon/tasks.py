@@ -26,7 +26,8 @@ def catch_pokemon():
 
 
 def create_or_update_pokemon(data):
-    """Task helper to deal with adding/updating Pokemon and Abilities.
+    """
+    Task helper to deal with adding/updating Pokemon and Abilities.
     This method of adding the m-2-m Ability objects requires a lot
     of hitting the database, and should be refactored.
     """
