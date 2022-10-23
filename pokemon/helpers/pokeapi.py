@@ -24,6 +24,7 @@ class PokeAPI:
         url = self.get_url(f"{self.POKEMON_ENDPOINT}/{name}")
         response = requests.get(url)
         data = self.json_if_status_code_equals(response)
+        data["name"] = name
         return data
 
     def get_results_count(self, endpoint):
