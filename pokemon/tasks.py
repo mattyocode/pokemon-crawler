@@ -26,7 +26,8 @@ def catch_pokemon():
 
 
 def create_or_update_pokemon(data):
-    """Task helper to deal with adding/updating Pokemon and Abilities.
+    """
+    Task helper to deal with adding/updating Pokemon and Abilities.
     This method of adding the m-2-m Ability objects requires a lot
     of hitting the database, and should be refactored.
     """
@@ -35,9 +36,7 @@ def create_or_update_pokemon(data):
 
         abilities = []
         for ability in data["abilities"]:
-            abilities.append(
-                Ability.objects.get_or_create(name=ability["ability"]["name"])[0]
-            )
+            abilities.append(Ability.objects.get_or_create(name=ability["ability"]["name"])[0])
         pokemon_obj.abilities.set(abilities)
 
         pokemon_obj.height = data["height"]
