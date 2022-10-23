@@ -5,7 +5,7 @@ class Ability(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
-        return f"Ability: {self.name}"
+        return self.name
 
     class Meta:
         verbose_name = "abilities"
@@ -21,3 +21,14 @@ class Pokemon(models.Model):
 
     def __str__(self):
         return self.name
+
+    @property
+    def stats_list(self):
+        if len(self.stats) > 0:
+            stats_list = []
+            for stat in self.stats:
+                try:
+                    stats_list.append(f'{stat["stat"]["name"]}: {stat["base_stat"]}')
+                except KeyError:
+                    pass
+            return stats_list
