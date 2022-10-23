@@ -18,3 +18,13 @@ class ModelTest(TestCase):
             sprite=POKEMON_1_DETAIL["sprites"]["back_default"],
         )
         self.assertEqual(pokemon.name, "bulbasaur")
+        self.assertEqual(pokemon.height, POKEMON_1_DETAIL["height"])
+        self.assertEqual(pokemon.weight, POKEMON_1_DETAIL["weight"])
+        self.assertEqual(pokemon.stats, POKEMON_1_DETAIL["stats"])
+        self.assertEqual(pokemon.sprite, POKEMON_1_DETAIL["sprites"]["back_default"])
+
+    def test_add_ability_to_pokemon(self):
+        ability = Ability.objects.create(name="write tests")
+        pokemon = Pokemon.objects.create(name="bulbasaur")
+        pokemon.abilities.add(ability)
+        self.assertIn(ability, pokemon.abilities.all())
