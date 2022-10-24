@@ -139,6 +139,6 @@ CELERY_IMPORTS = ("pokemon.tasks",)
 CELERY_BEAT_SCHEDULE = {
     "catch-pokemon": {
         "task": "pokemon.tasks.catch_pokemon",
-        "schedule": crontab(minute="*/10"),
+        "schedule": crontab(minute="*/15"),
     },
 }
