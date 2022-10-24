@@ -24,8 +24,6 @@ class Crawler:
     def create_or_update_pokemon(self, data):
         """
         Task helper to deal with adding/updating Pokemon and Abilities.
-        This method of adding the m-2-m Ability objects requires a lot
-        of hitting the database, and should be refactored.
         """
         try:
             pokemon_obj, created = Pokemon.objects.get_or_create(name=data["name"])
