@@ -26,7 +26,7 @@ Once launched, requirements will be installed, Django migrations will be applied
 
 4. Visit the frontend
 
-		Once Pokemon and Ability objects have started to populate the database, you can visit the 'Pokemon Zoo' (a hastily put together frontend) at `localhost:8000`.
+Once Pokemon and Ability objects have started to populate the database, you can visit the 'Pokemon Zoo' (a hastily put together frontend) at `localhost:8000`.
 
 ## Explainer/Thoughts
 
