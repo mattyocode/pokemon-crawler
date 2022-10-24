@@ -43,15 +43,5 @@ services:
       - redis
       - web
 
-  celery-beat:
-    build: .
-    command: celery -A app beat -l info
-    volumes:
-      - .:/code
-    env_file:
-      - ./.env.dev
-    depends_on:
-      - celery
-
 volumes:
   pg_data:
