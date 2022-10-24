@@ -131,14 +131,14 @@ STATIC_URL = "/static/"
 CELERY_RESULT_BACKEND = "redis"
 CELERY_BROKER_URL = "redis://redis:6379"
 CELERY_RESULT_BACKEND = "redis://redis:6379"
-CELERY_TIMEZONE = "Europe/London"
+CELERY_TIMEZONE = "UTC"
 CELERY_TASK_TRACK_STARTED = True
-CELERY_TASK_TIME_LIMIT = 20 * 60
+CELERY_TASK_TIME_LIMIT = 30 * 60
 CELERY_IMPORTS = ("pokemon.tasks",)
 
 CELERY_BEAT_SCHEDULE = {
     "catch-pokemon": {
         "task": "pokemon.tasks.catch_pokemon",
-        "schedule": crontab(minute="*/30"),
+        "schedule": crontab(minute="*/10"),
     },
 }
