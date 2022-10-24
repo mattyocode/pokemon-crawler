@@ -1,15 +1,22 @@
+import logging
+
 from django.test import TestCase
 
+from ..helpers.crawler import Crawler
 from ..models import Ability, Pokemon
-from ..tasks import create_or_update_pokemon
 from .test_data import POKEMON_1_DETAIL
 
+logger = logging.getLogger("test")
 
-class ModelTest(TestCase):
+
+class CrawlerTest(TestCase):
+    def setUp(self):
+        self.crawler = Crawler(logger)
+
     def test_create_or_update_pokemon(self):
         test_data = POKEMON_1_DETAIL
         test_data["name"] = "bulbasaur"
-        create_or_update_pokemon(test_data)
+        self.crawler.create_or_update_pokemon(test_data)
 
         pokemon = Pokemon.objects.get(name="bulbasaur")
 

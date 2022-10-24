@@ -15,7 +15,9 @@ services:
 
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: >
+      sh -c "python manage.py migrate &&
+            python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/code
     ports:
@@ -33,13 +35,14 @@ services:
   celery:
     build:
       context: .
-    command: celery -A app worker -P threads -l info --uid=nobody --gid=nogroup
+    command: >
+      celery -A app worker -l info -Q pokemon_task_queue 
+      --pool=prefork --concurrency=1 --uid=nobody --gid=nogroup
     volumes:
       - .:/code
     env_file:
       - ./.env.dev
     depends_on:
-      - db
       - redis
       - web
 
