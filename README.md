@@ -32,7 +32,7 @@ Once Pokemon and Ability objects have populated the database, you can visit the 
 
 To stay more or less within the stated timeframe, the design is simple - abstracting the PokeAPI interaction and crawling to helper modules and using a class-based ListView to display the captured Pokemon visually.
 
-I'm enthusiastic about testing, and test drove the PokeAPI class, but took the decision to test more lightly elsewhere. I'd add more tests given more time and implement a clear separation between unit tests and integration tests.
+I'm enthusiastic about testing, and test drove the PokeAPI class, but took the decision to test more lightly elsewhere. I'd add more tests given more time and implement separate unit tests and integration tests.
 
 Celery is currently handling catching Pokemon regularly, and this could be deployed as auto-scaling EC2 workers or Lambda tasks if a more robust and up-to-date reflection of Pokemon activity and attributes was necessary. A VPC with a greater range of IP addresses would also help with rate limiting.
 
