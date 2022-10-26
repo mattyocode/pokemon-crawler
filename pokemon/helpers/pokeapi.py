@@ -27,15 +27,15 @@ class PokeAPI:
         data["name"] = name
         return data
 
+    def get_pokemon_count(self):
+        return self.get_results_count(self.POKEMON_ENDPOINT)
+
     def get_results_count(self, endpoint):
         url = self.get_url(endpoint)
         response = requests.get(url)
         data = self.json_if_status_code_equals(response)
         count = data.get("count", 0)
         return count
-
-    def get_pokemon_count(self):
-        return self.get_results_count(self.POKEMON_ENDPOINT)
 
     def get_url(self, path="", params=None):
         base = f"{self.PROTOCOL}://{self.URL_BASE}/{path}"

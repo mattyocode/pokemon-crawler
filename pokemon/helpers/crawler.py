@@ -1,4 +1,3 @@
-from django.db import transaction
 from requests.exceptions import HTTPError, SSLError
 
 from ..models import Ability, Pokemon
@@ -13,13 +12,12 @@ class Crawler:
     def get_all_pokemon(self):
         available_pokemon = self.api.get_available_pokemon()
 
-        with transaction.atomic():
-            for pokemon in available_pokemon:
-                try:
-                    pokemon_data = self.api.get_pokemon_data(pokemon)
-                    self.create_or_update_pokemon(pokemon_data)
-                except (HTTPError, SSLError) as e:
-                    self.logger.error(f"*** Error occurred catching {pokemon}: {e} ***")
+        for pokemon in available_pokemon:
+            try:
+                pokemon_data = self.api.get_pokemon_data(pokemon)
+                self.create_or_update_pokemon(pokemon_data)
+            except (HTTPError, SSLError) as e:
+                self.logger.error(f"*** Error occurred catching {pokemon}: {e} ***")
 
     def create_or_update_pokemon(self, data):
         """
